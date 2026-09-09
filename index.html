@@ -661,8 +661,9 @@
                     </div>
                 </div>
             </div>
-            <div class="services-cta">
-                <a href="#" class="btn-dark"><i class="fas fa-phone-alt"></i> استشر الطبيب الآن</a>
+            <a href="#" onclick="document.getElementById('consultModal').style.display='flex'; return false;" class="btn-dark">
+    <i class="fas fa-phone-alt"></i> استشر الطبيب الآن
+</a>
             </div>
         </div>
     </section>
@@ -1318,5 +1319,22 @@
         setInterval(function () { ping(false); }, 25000);
     })();
     </script>
+    <!-- مودال اختيار الفرع للاستشارة -->
+<div id="consultModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10002; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+    <div style="background:#fff; border-radius:20px; padding:30px; max-width:400px; width:90%; text-align:center; direction:rtl; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+        <h3 style="color:#1e3a8a; margin-bottom:20px; font-size:1.5rem;">
+            <i class="fas fa-stethoscope" style="color:#2563eb;"></i> اختر الفرع للاستشارة
+        </h3>
+        <a href="https://wa.me/201061119615" target="_blank" class="btn-whatsapp" style="display:block; margin-bottom:12px; background:#25d366; color:#fff; padding:14px; border-radius:50px; font-weight:bold; text-decoration:none; font-size:1.1rem;">
+            <i class="fab fa-whatsapp"></i> فرع أكتوبر
+        </a>
+        <a href="https://wa.me/201032444727" target="_blank" class="btn-whatsapp" style="display:block; margin-bottom:12px; background:#25d366; color:#fff; padding:14px; border-radius:50px; font-weight:bold; text-decoration:none; font-size:1.1rem;">
+            <i class="fab fa-whatsapp"></i> فرع فيصل
+        </a>
+        <button onclick="document.getElementById('consultModal').style.display='none'" style="background:#e2e8f0; border:none; padding:10px 28px; border-radius:50px; cursor:pointer; font-weight:bold; font-size:1rem; margin-top:8px; color:#1e293b;">
+            إلغاء
+        </button>
+    </div>
+</div>
 </body>
 </html>
