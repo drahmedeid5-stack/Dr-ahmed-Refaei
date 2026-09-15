@@ -217,6 +217,10 @@
             text-align: center;
             padding: 10px;
         }
+        /* الأسهم لا تظهر على السلايدر الصغير؛ التحكم من النقط أسفل الصورة */
+        .gallery-slider .slider-arrow {
+            display: none;
+        }
         .slider-arrow {
             position: absolute;
             top: 50%;
@@ -318,6 +322,28 @@
             object-fit: contain;
             display: block;
         }
+        .modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.88);
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10002;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(0,0,0,.3);
+        }
+        .modal-nav:hover { background:#fff; transform:translateY(-50%) scale(1.08); }
+        .modal-nav.prev { right: 24px; }
+        .modal-nav.next { left: 24px; }
+
         .modal-overlay .modal-content iframe {
             width: 90vw;
             height: 90vh;
@@ -326,6 +352,9 @@
             border: none;
         }
         @media (max-width: 700px) {
+            .modal-nav { width:38px; height:38px; }
+            .modal-nav.prev { right:10px; }
+            .modal-nav.next { left:10px; }
             .modal-overlay .modal-content iframe {
                 width: 95vw;
                 height: 55vh;
@@ -826,6 +855,8 @@
     <!-- مودال -->
     <div class="modal-overlay" id="modalOverlay">
         <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-nav prev" id="modalPrev" aria-label="الصورة السابقة"><i class="fas fa-chevron-right"></i></button>
+        <button class="modal-nav next" id="modalNext" aria-label="الصورة التالية"><i class="fas fa-chevron-left"></i></button>
         <div class="modal-content" id="modalContent"></div>
     </div>
 
@@ -876,22 +907,28 @@
         }
 
         // ===== المودال =====
-        function openModal(url, type, title) {
-            const overlay = document.getElementById('modalOverlay');
+        window.__galleryModalItems = [];
+        window.__galleryModalIndex = 0;
+
+        function renderGalleryModalItem(index) {
+            const items = window.__galleryModalItems || [];
+            if (!items.length) return;
+
+            const total = items.length;
+            window.__galleryModalIndex = ((index % total) + total) % total;
+            const item = items[window.__galleryModalIndex];
             const content = document.getElementById('modalContent');
-            content.innerHTML = '';
+            if (!content) return;
 
-            let finalUrl = url;
-            let isDrive = isDriveUrl(url);
-            let isYT = isYouTubeUrl(url);
+            let finalUrl = item.url || '';
+            const isDrive = isDriveUrl(finalUrl);
+            const isYT = isYouTubeUrl(finalUrl);
+            if (isDrive) finalUrl = convertToDirectDriveUrl(finalUrl);
 
-            // لو الرابط جوجل درايف، نحوله لمباشر
-            if (isDrive) {
-                finalUrl = convertToDirectDriveUrl(url);
-            }
+            const type = item.type || (isYT ? 'video' : 'image');
+            const title = item.title || 'صورة';
 
-            // لو يوتيوب، ناخد embed
-            if (isYT) {
+            if (type === 'video' || isYT) {
                 let videoId = '';
                 const patterns = [
                     /youtube\.com\/watch\?v=([^&]+)/,
@@ -904,10 +941,27 @@
                 }
                 const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : finalUrl;
                 content.innerHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
-            } 
-            // لو صورة
-            else {
-                content.innerHTML = `<img src="${finalUrl}" alt="${title || 'صورة'}" onerror="this.parentElement.innerHTML='<div style=\\'color:#f87171;padding:20px;\\'>⚠️ تعذر تحميل الصورة. تأكد من أن الملف عام (Anyone with the link can view)</div>'" />`;
+            } else {
+                content.innerHTML = `<img src="${finalUrl}" alt="${title.replace(/"/g,'&quot;')}" onerror="this.parentElement.innerHTML='<div style=\'color:#f87171;padding:20px;\'>⚠️ تعذر تحميل الصورة. تأكد من أن الملف عام (Anyone with the link can view)</div>'" />`;
+            }
+
+            const prev = document.getElementById('modalPrev');
+            const next = document.getElementById('modalNext');
+            const showNav = total > 1;
+            if (prev) prev.style.display = showNav ? 'flex' : 'none';
+            if (next) next.style.display = showNav ? 'flex' : 'none';
+        }
+
+        function openModal(url, type, title, index) {
+            const overlay = document.getElementById('modalOverlay');
+            if (!overlay) return;
+
+            // عند فتح صورة من المعرض نحتفظ بكل عناصر المعرض حتى تعمل الأسهم داخل التكبير فقط.
+            if (window.__galleryModalItems && window.__galleryModalItems.length) {
+                renderGalleryModalItem(typeof index === 'number' ? index : 0);
+            } else {
+                window.__galleryModalItems = [{ url:url, type:type, title:title }];
+                renderGalleryModalItem(0);
             }
 
             overlay.classList.add('active');
@@ -919,6 +973,10 @@
             const content = document.getElementById('modalContent');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
+            const prev = document.getElementById('modalPrev');
+            const next = document.getElementById('modalNext');
+            if (prev) prev.style.display = 'none';
+            if (next) next.style.display = 'none';
             const iframe = content.querySelector('iframe');
             if (iframe) {
                 const src = iframe.src;
@@ -931,6 +989,17 @@
             const overlay = document.getElementById('modalOverlay');
             const closeBtn = document.getElementById('modalClose');
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            if (modalPrev) modalPrev.addEventListener('click', function (e) {
+                e.stopPropagation();
+                renderGalleryModalItem(window.__galleryModalIndex - 1);
+            });
+            if (modalNext) modalNext.addEventListener('click', function (e) {
+                e.stopPropagation();
+                renderGalleryModalItem(window.__galleryModalIndex + 1);
+            });
             if (overlay) {
                 overlay.addEventListener('click', function(e) {
                     if (e.target === overlay) closeModal();
@@ -1183,6 +1252,7 @@
             });
 
             container.innerHTML = slidesHtml;
+            window.__galleryModalItems = galleryData;
 
             let dotsHtml = '';
             galleryData.forEach((_, index) => {
@@ -1198,7 +1268,7 @@
                     const type = this.dataset.type;
                     const title = this.dataset.title;
                     if (url) {
-                        openModal(url, type, title);
+                        openModal(url, type, title, parseInt(this.dataset.index || '0', 10));
                     }
                 });
             });
