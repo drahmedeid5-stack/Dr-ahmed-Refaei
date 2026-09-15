@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>عيادة دكتور أحمد عيد رفاعي - المسالك البولية</title>
@@ -40,25 +38,23 @@
         @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
         .hero {
-            background:
-                radial-gradient(circle at 15% 50%, rgba(255,255,255,0.10) 0%, transparent 50%),
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
                 radial-gradient(circle at 85% 30%, rgba(255,255,255,0.08) 0%, transparent 40%),
                 linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
-            padding: 28px 0 24px;
+            padding: 40px 0 30px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:rgba(255,255,255,0.3); }
-        .hero .container { position:relative; z-index:2; }
-        .hero-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(430px,48%); gap:34px; align-items:center; direction:ltr; }
-        .hero-main { direction:rtl; min-width:0; }
-        .hero-top { display:flex; flex-direction:column; align-items:center; text-align:center; }
-        .hero-top .doctor-name { font-size:2.8rem; font-weight:900; color:#fff; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.4); }
-        .hero-top .doctor-title { font-size:1.3rem; font-weight:600; color:#e0eaff; margin-bottom:12px; }
-        .hero-center { text-align:center; margin:20px 0; }
-        .hero-center .best-care { font-size:2rem; font-weight:900; color:#fff; letter-spacing:1px; text-shadow:0 2px 8px rgba(0,0,0,.3); }
-        .hero-center .desc { font-size:1.1rem; color:#dbeafe; max-width:800px; margin:10px auto 0; line-height:1.9; }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+        }
+        .hero .container { position: relative; z-index: 2; }
 
         .hero-top { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero-top .doctor-name { font-size: 2.8rem; font-weight: 900; color: #ffffff; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
@@ -329,12 +325,6 @@
             max-height: 90vh;
             border: none;
         }
-        .modal-gallery-nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border:0; border-radius:50%; background:rgba(255,255,255,.94); color:#1e3a8a; cursor:pointer; z-index:10003; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 16px rgba(0,0,0,.25); font-size:1.2rem; }
-        .modal-gallery-nav:hover { transform:translateY(-50%) scale(1.08); }
-        .modal-gallery-nav.prev { right:14px; }
-        .modal-gallery-nav.next { left:14px; }
-        .modal-gallery-title { position:absolute; bottom:10px; left:70px; right:70px; color:#fff; text-align:center; z-index:10003; font-weight:700; text-shadow:0 2px 6px rgba(0,0,0,.7); pointer-events:none; }
-
         @media (max-width: 700px) {
             .modal-overlay .modal-content iframe {
                 width: 95vw;
@@ -349,8 +339,8 @@
         .section-subtitle { font-size: 1.15rem; color: #475569; margin-top: 8px; }
         
         .about { padding: 70px 0 60px; background: #ffffff; }
-        .about-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-top: 30px; }
-        .about-text { flex: 1 1 55%; min-width: 280px; }
+        .about-grid { display:grid; grid-template-columns:minmax(280px, .95fr) minmax(360px, 1.05fr); grid-template-rows:auto auto; gap:28px; align-items:start; margin-top:30px; direction:ltr; }
+        .about-text { grid-column:1 / -1; grid-row:1; min-width:0; direction:rtl; }
         .about-text .doctor-name-lg { font-size: 2.2rem; font-weight: 900; color: #1e3a8a; margin-bottom: 2px; }
         .about-text .doctor-name-lg span { color: #2563eb; }
         .about-text .doctor-sub { font-size: 1.2rem; font-weight: 600; color: #1d4ed8; margin-bottom: 20px; }
@@ -362,81 +352,180 @@
         .about-branch { margin-top: 28px; padding: 18px 28px; background: #f8fafc; border-radius: 14px; border-right: 6px solid #2563eb; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 50px; }
         .about-branch .branch-item { display: flex; align-items: center; gap: 12px; font-weight: 600; color: #1e3a8a; }
         .about-branch .branch-item i { color: #2563eb; font-size: 1.3rem; }
-        .about-image { flex: 1 1 35%; min-width: 220px; display: flex; justify-content: center; }
+        .about-image { grid-column:2; grid-row:2; min-width:0; display:flex; justify-content:center; direction:rtl; }
         
 
-        /* ===== الأطباء: مساحة كبيرة في يمين المنطقة الزرقاء ===== */
-        .hero-doctors { position:relative; width:100%; z-index:8; direction:rtl; }
-        .hero-doctors-title { color:#fff; font-size:1.35rem; font-weight:900; text-align:center; margin-bottom:10px; text-shadow:0 2px 7px rgba(0,0,0,.25); }
-        .doctors-slider { position:relative; height:390px; width:100%; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.30); border-radius:24px; overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,.16); backdrop-filter:blur(5px); }
-        .doctors-viewport { width:100%; height:100%; overflow:hidden; }
-        .doctors-track { display:flex; width:100%; height:100%; transition:transform .55s ease; direction:ltr; }
-        .doctor-card-mini { min-width:100%; height:100%; position:relative; overflow:hidden; direction:rtl; text-align:center; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(135deg,#3b82f6,#1d4ed8); }
-        .doctor-card-mini .doctor-photo-full { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:0; background:rgba(255,255,255,.08); }
-        .doctor-card-mini::after { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top,rgba(8,31,82,.94) 0%,rgba(8,31,82,.48) 38%,rgba(8,31,82,.05) 75%); }
-        .doctor-mini-info { position:relative; z-index:2; padding:90px 30px 30px; }
-        .doctor-card-mini .doctor-mini-name { font-weight:900; font-size:1.65rem; line-height:1.35; text-shadow:0 2px 6px rgba(0,0,0,.35); }
-        .doctor-card-mini .doctor-mini-specialty { color:#e0edff; font-size:1.05rem; line-height:1.5; font-weight:600; margin-top:5px; text-shadow:0 1px 4px rgba(0,0,0,.35); }
-        .doctor-slider-arrow { position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; border:0; background:rgba(255,255,255,.95); color:#1e3a8a; cursor:pointer; z-index:4; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.16); font-size:1.15rem; }
+        /* ===== شريط الأطباء داخل الهيدر الأزرق ===== */
+        .hero-doctors {
+            position: absolute;
+            top: 24px;
+            right: 20px;
+            width: 260px;
+            z-index: 4;
+        }
+        .hero-doctors-title {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .doctors-slider {
+            position: relative;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 16px;
+            padding: 10px 38px;
+            backdrop-filter: blur(5px);
+        }
+        .doctors-viewport { overflow: hidden; border-radius: 10px; }
+        .doctors-track { display:flex; transition:transform .45s ease; direction:ltr; }
+        .doctor-card-mini {
+            min-width:100%;
+            direction:rtl;
+            text-align:center;
+            color:#fff;
+        }
+        .doctor-card-mini img {
+            width:82px; height:82px; object-fit:cover;
+            border-radius:50%;
+            border:3px solid rgba(255,255,255,.9);
+            display:block; margin:0 auto 7px;
+            background:#e2e8f0;
+        }
+        .doctor-card-mini .doctor-mini-name { font-weight:800; font-size:.95rem; line-height:1.4; }
+        .doctor-card-mini .doctor-mini-specialty { color:#dbeafe; font-size:.78rem; line-height:1.5; }
+        .doctor-slider-arrow {
+            position:absolute; top:50%; transform:translateY(-50%);
+            width:28px; height:28px; border-radius:50%;
+            border:0; background:rgba(255,255,255,.9); color:#1e3a8a;
+            cursor:pointer; z-index:3; display:flex; align-items:center; justify-content:center;
+        }
         .doctor-slider-arrow:hover { transform:translateY(-50%) scale(1.08); }
-        .doctor-slider-arrow.prev { right:14px; }
-        .doctor-slider-arrow.next { left:14px; }
-        .doctor-slider-dots { position:absolute; z-index:4; bottom:12px; left:0; right:0; display:flex; justify-content:center; gap:7px; }
-        .doctor-slider-dots button { width:9px; height:9px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.55); cursor:pointer; }
-        .doctor-slider-dots button.active { background:#fff; transform:scale(1.3); }
+        .doctor-slider-arrow.prev { right:6px; }
+        .doctor-slider-arrow.next { left:6px; }
+        .doctor-slider-dots { display:flex; justify-content:center; gap:5px; margin-top:7px; }
+        .doctor-slider-dots button { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.45); cursor:pointer; }
+        .doctor-slider-dots button.active { background:#fff; transform:scale(1.2); }
 
-        /* ===== العمود الجانبي للمقالات ===== */
-        .articles-column { width:100%; margin:0; direction:rtl; }
-        .articles-column-head { display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
-        .articles-column-title { margin:0; color:#1e3a8a; font-size:1.55rem; font-weight:900; display:flex; align-items:center; gap:9px; }
-        .articles-column-title i { color:#2563eb; }
-        .articles-slider { position:relative; }
-        .articles-viewport { height:390px; overflow-y:auto; overflow-x:hidden; border-radius:18px; border:1px solid #e2d2bb; background:#fff; box-shadow:0 8px 25px rgba(15,23,42,.07); scrollbar-width:auto; scrollbar-color:#b8b8b8 #f4f4f4; }
-        .articles-viewport::-webkit-scrollbar { width:12px; }
-        .articles-viewport::-webkit-scrollbar-track { background:#f3f3f3; border-radius:10px; }
-        .articles-viewport::-webkit-scrollbar-thumb { background:#aaa; border-radius:10px; border:2px solid #f3f3f3; }
-        .articles-track { display:flex; flex-direction:column; gap:8px; padding:10px; }
-        .article-card { flex:0 0 auto; min-height:70px; width:100%; box-sizing:border-box; display:flex; align-items:center; gap:12px; padding:12px 15px; background:#fbf8f2; border:1px solid #dfcdb5; border-radius:12px; cursor:pointer; transition:.25s ease; text-align:right; direction:rtl; }
-        .article-card:hover { background:#f6efe5; transform:translateY(-1px); box-shadow:0 4px 10px rgba(15,23,42,.06); }
-        .article-card::before { content:'🔗'; width:25px; flex:0 0 25px; color:#23734f; font-size:.95rem; text-align:center; }
-        .article-card-body { padding:0; min-width:0; flex:1; }
-        .article-card h3 { color:#23734f; font-size:1rem; line-height:1.5; margin:0; font-weight:700; }
-        .article-card p, .article-card img { display:none !important; }
-        .article-read-more { display:none; }
-        .article-slider-arrow { display:none !important; }
-        .articles-empty { text-align:center; color:#64748b; padding:25px; }
-        @media (max-width:850px) {
-            .hero-layout { grid-template-columns:1fr; gap:18px; }
-            .hero-doctors { width:min(520px,100%); margin:0 auto; }
-            .doctors-slider { height:330px; }
+        /* ===== المقالات بجانب بيانات الطبيب والمعرض ===== */
+        .articles-panel { grid-column:3;
+
+            background:#fff;
+            border:1px solid #e2e8f0;
+            border-radius:18px;
+            padding:20px;
+            box-shadow:0 8px 25px rgba(15,23,42,.06);
+            min-width:0;
+            direction:rtl;
         }
-        .articles-section { padding:36px 0 42px; background:#fff; }
-        .articles-column {
-            width:min(370px,100%); margin-left:0; margin-right:auto;
+        .articles-panel-title {
+            color:#1e3a8a;
+            font-size:1.45rem;
+            font-weight:800;
+            text-align:center;
+            margin:0 0 6px;
         }
-        .articles-column-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-        .articles-column-title { margin:0; color:#1e3a8a; font-size:1.55rem; font-weight:900; display:flex; align-items:center; gap:9px; }
-        .articles-column-title i { color:#2563eb; }
-        .articles-slider { position:relative; padding:0 0 0 0; }
-        .articles-viewport { height:390px; overflow:hidden; border-radius:18px; border:1px solid #dbeafe; background:#f8fbff; box-shadow:0 8px 25px rgba(15,23,42,.07); }
-        .articles-track { display:flex; flex-direction:column; transition:transform .55s ease; }
+        .articles-panel-subtitle {
+            color:#64748b;
+            font-size:.88rem;
+            line-height:1.7;
+            text-align:center;
+            margin:0 0 14px;
+        }
+        .articles-scroll-area {
+            position:relative;
+            display:flex;
+            align-items:center;
+            gap:8px;
+        }
+        .articles-scroll-btn {
+            flex:0 0 38px;
+            width:38px;
+            height:38px;
+            border:0;
+            border-radius:50%;
+            background:#2563eb;
+            color:#fff;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow:0 4px 12px rgba(37,99,235,.25);
+            transition:.2s ease;
+        }
+        .articles-scroll-btn:hover {
+            background:#1d4ed8;
+            transform:scale(1.05);
+        }
+        .articles-list-viewport {
+            height:420px;
+            overflow-y:auto;
+            overflow-x:hidden;
+            flex:1;
+            min-width:0;
+        }
+        .articles-list-viewport::-webkit-scrollbar {
+            width:10px;
+        }
+        .articles-list-viewport::-webkit-scrollbar-track {
+            background:#eef2f7;
+            border-radius:10px;
+        }
+        .articles-list-viewport::-webkit-scrollbar-thumb {
+            background:#94a3b8;
+            border-radius:10px;
+            border:2px solid #eef2f7;
+        }
+        .articles-list-viewport::-webkit-scrollbar-thumb:hover {
+            background:#64748b;
+        }
+        .articles-grid {
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            margin:0;
+        }
         .article-card {
-            flex:0 0 78px; min-height:78px; width:100%; box-sizing:border-box;
-            display:flex; align-items:center; gap:12px; padding:13px 18px;
-            background:#fff; border:0; border-bottom:1px solid #e5e7eb; border-radius:0;
-            cursor:pointer; transition:.25s ease; text-align:right; direction:rtl;
+            flex:0 0 auto;
+            background:#fff;
+            border:1px solid #e2e8f0;
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 4px 14px rgba(15,23,42,.05);
+            cursor:pointer;
+            transition:.25s ease;
         }
-        .article-card:first-child { border-radius:17px 17px 0 0; }
-        .article-card:hover { background:#eff6ff; transform:none; box-shadow:none; }
-        .article-card::before { content:'›'; width:30px; height:30px; flex:0 0 30px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#2563eb; color:#fff; font-size:1.25rem; }
-        .article-card-body { padding:0; min-width:0; }
-        .article-card h3 { color:#1e3a8a; font-size:1rem; line-height:1.45; margin:0; font-weight:800; }
-        .article-card p, .article-card img { display:none !important; }
-        .article-read-more { display:block; margin-top:3px; color:#64748b; font-size:.76rem; font-weight:600; }
-        .article-slider-arrow { position:absolute; left:50%; transform:translateX(-50%); width:36px; height:30px; border:1px solid #bfdbfe; border-radius:10px; background:#fff; color:#1e3a8a; z-index:3; cursor:pointer; box-shadow:0 4px 12px rgba(15,23,42,.10); }
-        .article-slider-arrow:hover { background:#eff6ff; }
-        .article-slider-arrow.up { top:-15px; }
-        .article-slider-arrow.down { bottom:-15px; }
+        .article-card:hover {
+            transform:translateY(-2px);
+            box-shadow:0 8px 20px rgba(15,23,42,.1);
+            border-color:#93c5fd;
+        }
+        .article-card img {
+            width:100%;
+            height:120px;
+            object-fit:cover;
+            display:block;
+            background:#e2e8f0;
+        }
+        .article-card-body { padding:12px 14px; }
+        .article-card h3 { color:#1e3a8a; font-size:1rem; margin-bottom:5px; }
+        .article-card p {
+            color:#64748b;
+            font-size:.82rem;
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient:vertical;
+            overflow:hidden;
+            line-height:1.7;
+        }
+        .article-read-more {
+            display:inline-block;
+            margin-top:7px;
+            color:#2563eb;
+            font-weight:700;
+            font-size:.82rem;
+        }
         .article-modal-content {
             width:min(900px,95vw); max-height:90vh; overflow:auto;
             background:#fff; color:#1e293b; border-radius:18px; padding:28px;
@@ -445,28 +534,8 @@
         .article-modal-content h2 { color:#1e3a8a; margin-bottom:15px; font-size:1.8rem; }
         .article-modal-text { white-space:pre-wrap; line-height:2; font-size:1.05rem; }
         .article-modal-images { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
-        .article-modal-images img { width:100%; height:180px; object-fit:cover; border-radius:12px; cursor:pointer; background:#e2e8f0; }
+        .article-modal-images img { width:100%; height:180px; object-fit:cover; border-radius:12px; cursor:pointer; }
         .articles-empty { text-align:center; color:#64748b; padding:25px; }
-        @media (max-width:850px) {
-            .hero-doctors { width:min(520px,100%); margin:0 auto; }
-            .doctors-slider { height:330px; }
-            .articles-viewport { height:330px; }
-        }
-
-        /* ===== تخطيط المعرض + النبذة + المقالات ===== */
-        .content-showcase { padding:55px 0 50px; background:#f4f8ff; }
-        .content-showcase-grid { display:grid; grid-template-columns:1.05fr 1.75fr 1.05fr; gap:28px; align-items:stretch; direction:ltr; }
-        .showcase-about, .showcase-gallery, .showcase-articles { direction:rtl; min-width:0; }
-        .showcase-about { order:3; background:#fff; border:1px solid #e5e7eb; border-radius:18px; padding:22px 18px; box-shadow:0 8px 24px rgba(15,23,42,.06); }
-        .showcase-gallery { order:2; }
-        .showcase-articles { order:1; background:#fff; border:1px solid #e5e7eb; border-radius:18px; padding:20px 16px; box-shadow:0 8px 24px rgba(15,23,42,.06); }
-        .showcase-gallery .section-title { font-size:1.55rem; margin-bottom:12px; }
-        .showcase-about .section-title { font-size:1.55rem; margin-bottom:18px; }
-        .showcase-about .about-points { gap:12px; }
-        .showcase-about .about-points li { background:#fff; border:1px solid #e5e7eb; border-radius:15px; padding:18px 14px; box-shadow:0 4px 14px rgba(15,23,42,.04); }
-        .gallery-slider-large { max-width:none; width:100%; height:390px; }
-        @media (max-width:1050px) { .content-showcase-grid { grid-template-columns:1fr 1.5fr; } .showcase-about { order:1; grid-column:1 / -1; } .showcase-gallery { order:2; } .showcase-articles { order:3; } }
-        @media (max-width:700px) { .content-showcase-grid { grid-template-columns:1fr; } .showcase-about,.showcase-gallery,.showcase-articles { order:initial; grid-column:auto; } .gallery-slider-large,.articles-viewport { height:300px; } }
 
         .services { padding: 70px 0 60px; background: #eff6ff; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; margin-top: 35px; }
@@ -542,17 +611,13 @@
             .services-grid { grid-template-columns: 1fr; }
             .gallery-slider { height: 200px; }
         }
+            /* ===== ترتيب القسم المطلوب: الطبيب أعلى، الصور يمين، المقالات شمال ===== */
+        .about-grid > .articles-panel { grid-column:1; grid-row:2; }
+        .about-grid > .about-text { grid-column:1 / -1; grid-row:1; }
+        .about-grid > .about-image { grid-column:2; grid-row:2; }
+        .articles-scroll-area { display:block; }
+        .articles-scroll-btn { display:none !important; }
     </style>
-    <!-- Google Tag Manager -->
-    <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NG2WXTXT');
-    </script>
-    <!-- End Google Tag Manager -->
-
 </head>
 <body>
     <!-- عداد الزوار -->
@@ -564,83 +629,101 @@
     <!-- الهيدر -->
     <header class="hero">
         <div class="container">
-            <div class="hero-layout">
-                <div class="hero-main">
-                    <div class="hero-top">
-                        <div class="doctor-name">د. <span id="cmDoctorName">أحمد عيد رفاعي</span></div>
-                        <div class="doctor-title" id="cmDoctorTitle">استشاري جراحة المسالك البولية</div>
+            <div class="hero-doctors" id="heroDoctors" style="display:none;">
+                
+                <div class="doctors-slider">
+                    <button class="doctor-slider-arrow prev" id="doctorPrev" aria-label="الطبيب السابق"><i class="fas fa-chevron-right"></i></button>
+                    <div class="doctors-viewport">
+                        <div class="doctors-track" id="doctorsTrack"></div>
                     </div>
-                    <div class="hero-center">
-                        <div class="best-care" id="cmHeroTagline">أفضل رعاية طبية متخصصة</div>
-                        <div class="desc" id="cmHeroDesc">تشخيص دقيق وعلاج فعال لأمراض الكلى، المسالك البولية، ومشاكل البروستاتا بأحدث التقنيات والمناظير الجراحية.</div>
-                    </div>
-                    <div class="news-ticker" id="newsTicker" style="display:none;"><div class="news-ticker-track" id="newsTickerTrack"></div></div>
-                    <div class="hero-buttons">
-                        <a href="booking.html" class="hero-book-btn" style="margin-bottom:0;"><i class="fas fa-calendar-check"></i> احجز الآن</a>
-                        <a href="tel:01032444727" id="cmWhatsappOctober" class="btn-call"><i class="fas fa-phone-alt"></i> اتصل لحجز (فيصل)</a>
-                        <a href="tel:01061119615" id="cmWhatsappFaisal" class="btn-call"><i class="fas fa-phone-alt"></i> اتصل لحجز (أكتوبر)</a>
-                    </div>
-                    <div class="hero-nav">
-                        <a href="#about"><i class="fas fa-user-md"></i> عن الطبيب</a>
-                        <a href="#services"><i class="fas fa-list-ul"></i> الخدمات</a>
+                    <button class="doctor-slider-arrow next" id="doctorNext" aria-label="الطبيب التالي"><i class="fas fa-chevron-left"></i></button>
+                    <div class="doctor-slider-dots" id="doctorDots"></div>
+                </div>
+            </div>
+            <div class="hero-top">
+                <div class="doctor-name">د. <span id="cmDoctorName">أحمد عيد رفاعي</span></div>
+                <div class="doctor-title" id="cmDoctorTitle">استشاري جراحة المسالك البولية</div>
+            </div>
+            <div class="hero-center">
+                <div class="best-care" id="cmHeroTagline">أفضل رعاية طبية متخصصة</div>
+                <div class="desc" id="cmHeroDesc">
+                    تشخيص دقيق وعلاج فعال لأمراض الكلى، المسالك البولية، ومشاكل البروستاتا بأحدث التقنيات والمناظر الجراحية.
+                </div>
+            </div>
+            
+            <div class="news-ticker" id="newsTicker" style="display:none;">
+                <div class="news-ticker-track" id="newsTickerTrack"></div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="booking.html" class="hero-book-btn" style="margin-bottom:0;">
+                    <i class="fas fa-calendar-check"></i> احجز الآن
+                </a>
+                <a href="https://wa.me/201061119615" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> تواصل واتساب
+                </a>
+                <a href="tel:01032444727" id="cmCallFaisal" class="btn-call">
+                    <i class="fas fa-phone-alt"></i> اتصل للحجز (فيصل)
+                </a>
+                <a href="tel:01061119615" id="cmCallOctober" class="btn-call">
+                    <i class="fas fa-phone-alt"></i> اتصل للحجز (أكتوبر)
+                </a>
+            </div>
+            <div class="hero-nav">
+                <a href="#about"><i class="fas fa-user-md"></i> عن الطبيب</a>
+                <a href="#services"><i class="fas fa-list-ul"></i> الخدمات</a>
                         <a href="#articles"><i class="fas fa-newspaper"></i> المقالات</a>
-                        <a href="#gallery"><i class="fas fa-images"></i> المعرض</a>
-                        <a href="#branches"><i class="fas fa-store"></i> الفروع والحجز</a>
-                    </div>
-                </div>
-                <div class="hero-doctors" id="heroDoctors" style="display:none;">
-                    <div class="hero-doctors-title"><i class="fas fa-user-md"></i> </div>
-                    <div class="doctors-slider">
-                        <button class="doctor-slider-arrow prev" id="doctorPrev" aria-label="الطبيب السابق"><i class="fas fa-chevron-right"></i></button>
-                        <div class="doctors-viewport"><div class="doctors-track" id="doctorsTrack"></div></div>
-                        <button class="doctor-slider-arrow next" id="doctorNext" aria-label="الطبيب التالي"><i class="fas fa-chevron-left"></i></button>
-                        <div class="doctor-slider-dots" id="doctorDots"></div>
-                    </div>
-                </div>
+                <a href="#branches"><i class="fas fa-store"></i> الفروع والحجز</a>
             </div>
         </div>
     </header>
 
-    <!-- قسم المحتوى: المقالات يسار + المعرض وسط + نبذة الطبيب يمين -->
-    <section id="about" class="content-showcase">
+    <!-- قسم عن الطبيب -->
+    <section id="about" class="about">
         <div class="container">
-            <div class="content-showcase-grid">
-                <div class="showcase-about">
-                    <h2 class="section-title section-title-center">نبذة عن الطبيب</h2>
-                    <div class="about-points" id="aboutPointsList">
+            <h2 class="section-title">نبذة عن الطبيب</h2>
+            <div class="about-grid">
+                <div class="articles-panel">
+                <h3 class="articles-panel-title">المقالات</h3>
+                <p class="articles-panel-subtitle">مقالات ونصائح طبية مفيدة عن أمراض الكلى والمسالك البولية.</p>
+                <div class="articles-scroll-area">
+                    <button type="button" class="articles-scroll-btn" id="articlesScrollUp" aria-label="المقالات السابقة">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                    <div class="articles-list-viewport" id="articlesListViewport">
+                        <div class="articles-grid" id="articlesGrid">
+                            <div class="articles-empty">جاري تحميل المقالات...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                    <div class="doctor-name-lg">دكتور <span>أحمد عيد رفاعي</span></div>
+                    <div class="doctor-sub"><i class="fas fa-stethoscope"></i> استشاري جراحة المسالك البولية</div>
+                    <ul class="about-points" id="aboutPointsList">
                         <li><i class="fas fa-check-circle"></i><span><strong>خبرة واسعة</strong> في تشخيص وعلاج أدق وأعقد الحالات الجراحية.</span></li>
                         <li><i class="fas fa-check-circle"></i><span><strong>مدرس بكلية الطب</strong> – جامعة الأزهر، مواكبة دائمة لأحدث الأدوات والتقنيات الطبية.</span></li>
                         <li><i class="fas fa-check-circle"></i><span><strong>استشاري جراحات المناظير والكلى</strong>، متخصص في العمليات بأقل تدخل جراحي.</span></li>
+                    </ul>
+                    <div class="about-branch">
+                        <div class="branch-item"><i class="fas fa-map-pin"></i> فرع فيصل <span style="font-weight:400;color:#475569;">| أجاز موعد الأثناء</span></div>
+                        <div class="branch-item"><i class="fas fa-clock"></i><span style="font-weight:400;color:#475569;">مواعيد مرنة</span></div>
                     </div>
                 </div>
-
-                <div class="showcase-gallery" id="gallery">
-                    <h2 class="section-title section-title-center">معرض الصور والفيديوهات</h2>
-                    <div class="gallery-slider gallery-slider-large" id="gallerySlider">
-                        <div class="slider-container" id="sliderContainer"></div>
-                        <button class="slider-arrow prev" id="sliderPrev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>
-                        <button class="slider-arrow next" id="sliderNext" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>
+                <div class="about-image">
+                    <div class="gallery-slider" id="gallerySlider">
+                        <div class="slider-container" id="sliderContainer">
+                            <!-- المحتوى هيتضاف بالجافاسكريبت -->
+                        </div>
+                        <button class="slider-arrow prev" id="sliderPrev"><i class="fas fa-chevron-right"></i></button>
+                        <button class="slider-arrow next" id="sliderNext"><i class="fas fa-chevron-left"></i></button>
                         <div class="slider-dots" id="sliderDots"></div>
-                    </div>
-                </div>
-
-                <div class="showcase-articles" id="articles">
-                    <div class="articles-column">
-                        <div class="articles-column-head">
-                            <h2 class="articles-column-title"><i class="fas fa-newspaper"></i> المقالات</h2>
-                        </div>
-                        <div class="articles-slider">
-                            <div class="articles-viewport" id="articlesViewport">
-                                <div class="articles-track" id="articlesGrid">
-                                    <div class="articles-empty">جاري تحميل المقالات...</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- قسم الخدمات -->
     <section id="services" class="services">
@@ -660,10 +743,6 @@
                         <div class="service-card"><div class="icon-wrap"><i class="fas fa-child"></i></div><h4>جراحات المسالك للأطفال</h4><p>علاج حالات الإنسداد الحالبي، الفتق، والإنسداد البولي عند الأطفال.</p></div>
                     </div>
                 </div>
-            </div>
-            <a href="#" onclick="document.getElementById('consultModal').style.display='flex'; return false;" class="btn-dark">
-    <i class="fas fa-phone-alt"></i> واتساب
-</a>
             </div>
         </div>
     </section>
@@ -782,15 +861,10 @@
         function convertToDirectDriveUrl(url) {
             const fileId = extractFileIdFromDriveUrl(url);
             if (fileId) {
-                // Google Drive: thumbnail أكثر ثباتًا لعرض الصور داخل المواقع من uc?export=view
-                return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(fileId) + '&sz=w2000';
+                return 'https://drive.google.com/uc?export=view&id=' + fileId;
             }
+            // لو مش جوجل درايف، نرجع الرابط كما هو
             return url;
-        }
-
-        function convertToDrivePreviewUrl(url) {
-            const fileId = extractFileIdFromDriveUrl(url);
-            return fileId ? 'https://drive.google.com/file/d/' + encodeURIComponent(fileId) + '/preview' : url;
         }
 
         function isDriveUrl(url) {
@@ -801,64 +875,43 @@
             return url && (url.includes('youtube.com') || url.includes('youtu.be'));
         }
 
-        // ===== المودال ومعرض الصور والفيديوهات داخل التكبير =====
-        let currentGalleryItems = [];
-        let currentGalleryIndex = 0;
-
-        function openModal(url, type, title, index, items) {
+        // ===== المودال =====
+        function openModal(url, type, title) {
             const overlay = document.getElementById('modalOverlay');
             const content = document.getElementById('modalContent');
-            if (!overlay || !content) return;
-            currentGalleryItems = items || [];
-            currentGalleryIndex = Number.isInteger(index) ? index : 0;
-            renderGalleryModal();
+            content.innerHTML = '';
+
+            let finalUrl = url;
+            let isDrive = isDriveUrl(url);
+            let isYT = isYouTubeUrl(url);
+
+            // لو الرابط جوجل درايف، نحوله لمباشر
+            if (isDrive) {
+                finalUrl = convertToDirectDriveUrl(url);
+            }
+
+            // لو يوتيوب، ناخد embed
+            if (isYT) {
+                let videoId = '';
+                const patterns = [
+                    /youtube\.com\/watch\?v=([^&]+)/,
+                    /youtu\.be\/([^?]+)/,
+                    /youtube\.com\/embed\/([^?]+)/
+                ];
+                for (const pattern of patterns) {
+                    const match = finalUrl.match(pattern);
+                    if (match) { videoId = match[1]; break; }
+                }
+                const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : finalUrl;
+                content.innerHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+            } 
+            // لو صورة
+            else {
+                content.innerHTML = `<img src="${finalUrl}" alt="${title || 'صورة'}" onerror="this.parentElement.innerHTML='<div style=\\'color:#f87171;padding:20px;\\'>⚠️ تعذر تحميل الصورة. تأكد من أن الملف عام (Anyone with the link can view)</div>'" />`;
+            }
+
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-        }
-
-        function renderGalleryModal() {
-            const content = document.getElementById('modalContent');
-            if (!content || !currentGalleryItems.length) return;
-            const item = currentGalleryItems[currentGalleryIndex];
-            let url = item.url || '';
-            const type = String(item.type || (isYouTubeUrl(url) ? 'video' : 'image')).toLowerCase();
-            const title = item.title || '';
-            const isYT = isYouTubeUrl(url);
-            if (isDriveUrl(url)) url = type === 'video' ? convertToDrivePreviewUrl(url) : convertToDirectDriveUrl(url);
-
-            let media = '';
-            if (type === 'video' || isYT) {
-                let videoId = '';
-                const patterns = [/youtube\.com\/watch\?v=([^&]+)/, /youtu\.be\/([^?]+)/, /youtube\.com\/embed\/([^?]+)/];
-                for (const pattern of patterns) { const m = url.match(pattern); if (m) { videoId=m[1]; break; } }
-                const embed = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&controls=1` : url;
-                media = `<iframe src="${embed}" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
-            } else {
-                media = `<img src="${url}" alt="${title || 'صورة'}" onerror="this.outerHTML='<div style=\'color:#fff;padding:30px;text-align:center;font-size:1rem\'>لا يمكن عرض الصورة</div>'">`;
-            }
-            const hasMany = currentGalleryItems.length > 1;
-            content.innerHTML = `
-                ${hasMany ? `<button class="modal-gallery-nav prev" id="modalGalleryPrev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>` : ''}
-                ${media}
-                ${hasMany ? `<button class="modal-gallery-nav next" id="modalGalleryNext" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>` : ''}
-                ${title ? `<div class="modal-gallery-title">${title}</div>` : ''}`;
-            document.getElementById('modalGalleryPrev')?.addEventListener('click', e => { e.stopPropagation(); changeGalleryModal(-1); });
-            document.getElementById('modalGalleryNext')?.addEventListener('click', e => { e.stopPropagation(); changeGalleryModal(1); });
-        }
-
-        function changeGalleryModal(step) {
-            if (!currentGalleryItems.length) return;
-            currentGalleryIndex = (currentGalleryIndex + step + currentGalleryItems.length) % currentGalleryItems.length;
-            renderGalleryModal();
-        }
-
-        function openArticleImage(url, title) {
-            currentGalleryItems = [{url:url, type:'image', title:title || ''}];
-            currentGalleryIndex = 0;
-            const overlay=document.getElementById('modalOverlay');
-            renderGalleryModal();
-            overlay?.classList.add('active');
-            document.body.style.overflow='hidden';
         }
 
         function closeModal() {
@@ -895,7 +948,9 @@
             const track = document.getElementById('doctorsTrack');
             const dots = document.getElementById('doctorDots');
             if (!wrap || !track || !dots) return;
-            const safeDoctors = (doctors || []).filter(d => d && (d.name || d.doctorName));
+            if (!doctors || !doctors.length) { wrap.style.display='none'; return; }
+
+            const safeDoctors = doctors.filter(d => d && (d.name || d.doctorName));
             if (!safeDoctors.length) { wrap.style.display='none'; return; }
 
             track.innerHTML = safeDoctors.map(d => {
@@ -904,11 +959,9 @@
                 const image = d.image || d.photo || d.url || '';
                 const img = image ? convertToDirectDriveUrl(image) : '';
                 return `<div class="doctor-card-mini">
-                    ${img ? `<img class="doctor-photo-full" src="${img}" alt="${name}" loading="lazy" onerror="this.style.display='none';">` : ''}
-                    <div class="doctor-mini-info">
-                        <div class="doctor-mini-name">${name}</div>
-                        <div class="doctor-mini-specialty">${specialty}</div>
-                    </div>
+                    ${img ? `<img src="${img}" alt="${name}" onerror="this.style.visibility='hidden';">` : `<div style="height:82px;"></div>`}
+                    <div class="doctor-mini-name">${name}</div>
+                    <div class="doctor-mini-specialty">${specialty}</div>
                 </div>`;
             }).join('');
 
@@ -920,51 +973,56 @@
                 track.style.transform=`translateX(-${index*100}%)`;
                 [...dots.children].forEach((b,i)=>b.classList.toggle('active',i===index));
             };
-            const stop=()=>{ if(timer){clearInterval(timer);timer=null;} };
-            const restart=()=>{ stop(); if(safeDoctors.length>1) timer=setInterval(()=>{index=(index+1)%safeDoctors.length;update();},5000); };
             const go=(i)=>{ index=(i+safeDoctors.length)%safeDoctors.length; update(); restart(); };
+            const restart=()=>{ if(timer) clearInterval(timer); if(safeDoctors.length>1) timer=setInterval(()=>go(index+1),5000); };
 
             document.getElementById('doctorNext')?.addEventListener('click',()=>go(index+1));
             document.getElementById('doctorPrev')?.addEventListener('click',()=>go(index-1));
             dots.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) go(Number(b.dataset.index));});
             const slider=wrap.querySelector('.doctors-slider');
-            slider?.addEventListener('mouseenter',stop);
+            slider?.addEventListener('mouseenter',()=>timer&&clearInterval(timer));
             slider?.addEventListener('mouseleave',restart);
             update(); restart();
         }
 
+        // ===== تحريك قائمة المقالات =====
+        function scrollArticlesPanel(direction) {
+            const viewport = document.getElementById('articlesListViewport');
+            if (!viewport) return;
+            const amount = Math.max(140, viewport.clientHeight * 0.75);
+            viewport.scrollBy({ top: direction * amount, behavior: 'smooth' });
+        }
+
+        const articlesUp = document.getElementById('articlesScrollUp');
+        const articlesDown = document.getElementById('articlesScrollDown');
+        if (articlesUp) articlesUp.addEventListener('click', () => scrollArticlesPanel(-1));
+        if (articlesDown) articlesDown.addEventListener('click', () => scrollArticlesPanel(1));
+
         // ===== المقالات =====
         function renderArticles(articles) {
-            const track=document.getElementById('articlesGrid');
-            if(!track) return;
+            const grid=document.getElementById('articlesGrid');
+            if(!grid) return;
             if(!articles || !articles.length) {
-                track.innerHTML='<div class="articles-empty">لا توجد مقالات مضافة حاليًا.</div>';
+                grid.innerHTML='<div class="articles-empty">لا توجد مقالات مضافة حاليًا.</div>';
                 return;
             }
-            track.innerHTML=articles.map((a,i)=>{
+            grid.innerHTML=articles.map((a,i)=>{
                 const title=a.title || a.name || 'مقال';
                 const text=a.text || a.content || '';
-                const preview=text.replace(/<[^>]*>/g,'').substring(0,100);
-                return `<article class="article-card" data-article-index="${i}" tabindex="0" role="button">
+                const first=[a.image1,a.image2,a.image3,a.image4,a.image5,a.image].find(Boolean);
+                const image=first ? convertToDirectDriveUrl(first) : '';
+                const preview=text.replace(/<[^>]*>/g,'').substring(0,180);
+                return `<article class="article-card" data-article-index="${i}">
+                    ${image ? `<img src="${image}" alt="${title}" onerror="this.style.display='none';">` : ''}
                     <div class="article-card-body">
                         <h3>${title}</h3>
-                        <span class="article-read-more">اضغط لقراءة المقال</span>
+                        <p>${preview}</p>
+                        <span class="article-read-more">اقرأ المقال ←</span>
                     </div>
                 </article>`;
             }).join('');
 
-            track.querySelectorAll('.article-card').forEach((card,i)=>{
-                card.addEventListener('click',()=>openArticleModal(articles[i]));
-                card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openArticleModal(articles[i]);}});
-            });
-            initArticlesSlider(articles.length);
-        }
-
-        function initArticlesSlider(total) {
-            const viewport = document.getElementById('articlesViewport');
-            if (!viewport || !total) return;
-            // التمرير يتم طبيعيًا ببكرة الماوس/التاتش باد، بدون أسهم.
-            viewport.scrollTop = 0;
+            grid.querySelectorAll('.article-card').forEach((card,i)=>card.addEventListener('click',()=>openArticleModal(articles[i])));
         }
 
         function openArticleModal(article) {
@@ -977,14 +1035,18 @@
             const images=imageKeys.map(k=>article[k]).filter(Boolean).map(convertToDirectDriveUrl);
             content.innerHTML=`<div class="article-modal-content">
                 <h2>${title}</h2>
-                ${images.length ? `<div class="article-modal-images">${images.map((u,i)=>`<img src="${u}" alt="${title} - صورة ${i+1}" loading="lazy" onclick="window.__openArticleImage && window.__openArticleImage('${u.replace(/'/g,"\\'")}','${title.replace(/'/g,"\\'")}')" onerror="this.style.display='none'">`).join('')}</div>` : ''}
+                ${images.length ? `<div class="article-modal-images">${images.map((u,i)=>`<img src="${u}" alt="${title} - صورة ${i+1}" onclick="window.__openArticleImage && window.__openArticleImage('${u.replace(/'/g,"\\\\'")}','${title.replace(/'/g,"\\\\'")}')">`).join('')}</div>` : ''}
                 <div class="article-modal-text">${text}</div>
             </div>`;
             overlay.classList.add('active');
             document.body.style.overflow='hidden';
         }
 
-        window.__openArticleImage = openArticleImage;
+        window.__openArticleImage=function(url,title){
+            const content=document.getElementById('modalContent');
+            if(!content) return;
+            content.innerHTML=`<img src="${url}" alt="${title}" style="max-width:95vw;max-height:90vh;object-fit:contain;">`;
+        };
 
         // ===== عرض الأخبار ونبذة الطبيب والخدمات =====
         function renderNews(news) {
@@ -1086,14 +1148,14 @@
                 let finalUrl = item.url;
                 let isDrive = isDriveUrl(finalUrl);
                 let isYT = isYouTubeUrl(finalUrl);
-                const type = item.type || (isYT ? 'video' : 'image');
 
-                // الصور من Drive تستخدم thumbnail، وفيديوهات Drive تستخدم preview
+                // تحويل جوجل درايف لمباشر
                 if (isDrive) {
-                    finalUrl = (type === 'video') ? convertToDrivePreviewUrl(finalUrl) : convertToDirectDriveUrl(finalUrl);
+                    finalUrl = convertToDirectDriveUrl(finalUrl);
                 }
 
                 let content = '';
+                const type = item.type || (isYT ? 'video' : 'image');
 
                 if (type === 'video' || isYT) {
                     let videoId = '';
@@ -1136,7 +1198,7 @@
                     const type = this.dataset.type;
                     const title = this.dataset.title;
                     if (url) {
-                        openModal(url, type, title, Number(this.dataset.index), galleryData);
+                        openModal(url, type, title);
                     }
                 });
             });
@@ -1227,12 +1289,6 @@
             digits = String(digits || '').replace(/\D/g, '');
             return digits.startsWith('0') ? digits : '0' + digits;
         }
-        function toWhatsAppLink(digits) {
-            digits = String(digits || '').replace(/\D/g, '');
-            if (digits.startsWith('20')) return 'https://wa.me/' + digits;
-            if (digits.startsWith('0')) return 'https://wa.me/20' + digits.substring(1);
-            return 'https://wa.me/20' + digits;
-        }
 
         function applyContent(c) {
             if (!c || c.error) return;
@@ -1255,14 +1311,18 @@
             setHtmlPrefix('cmBranchFaisalAddr', '<i class="fas fa-map-pin"></i>', c.branch_faisal_addr);
 
             if (c.phone_october) {
-                setText('cmPhoneOctoberDisplay', toLocalPhone(c.phone_october));
-                setText('cmPhoneOctoberFooter', toLocalPhone(c.phone_october));
-                const w1 = document.getElementById('cmWhatsappOctober'); if (w1) w1.href = toWhatsAppLink(c.phone_october);
+                const phoneOctober = toLocalPhone(c.phone_october);
+                setText('cmPhoneOctoberDisplay', phoneOctober);
+                setText('cmPhoneOctoberFooter', phoneOctober);
+                const callOctober = document.getElementById('cmCallOctober');
+                if (callOctober) callOctober.href = 'tel:' + phoneOctober;
             }
             if (c.phone_faisal) {
-                setText('cmPhoneFaisalDisplay', toLocalPhone(c.phone_faisal));
-                setText('cmPhoneFaisalFooter', toLocalPhone(c.phone_faisal));
-                const w2 = document.getElementById('cmWhatsappFaisal'); if (w2) w2.href = toWhatsAppLink(c.phone_faisal);
+                const phoneFaisal = toLocalPhone(c.phone_faisal);
+                setText('cmPhoneFaisalDisplay', phoneFaisal);
+                setText('cmPhoneFaisalFooter', phoneFaisal);
+                const callFaisal = document.getElementById('cmCallFaisal');
+                if (callFaisal) callFaisal.href = 'tel:' + phoneFaisal;
             }
             if (c.map_october) { const m1 = document.getElementById('cmMapOctober'); if (m1) m1.href = c.map_october; }
             if (c.map_faisal) { const m2 = document.getElementById('cmMapFaisal'); if (m2) m2.href = c.map_faisal; }
@@ -1319,22 +1379,5 @@
         setInterval(function () { ping(false); }, 25000);
     })();
     </script>
-    <!-- مودال اختيار الفرع للاستشارة -->
-<div id="consultModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10002; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
-    <div style="background:#fff; border-radius:20px; padding:30px; max-width:400px; width:90%; text-align:center; direction:rtl; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-        <h3 style="color:#1e3a8a; margin-bottom:20px; font-size:1.5rem;">
-            <i class="fas fa-stethoscope" style="color:#2563eb;"></i> اختر الفرع للاستشارة
-        </h3>
-        <a href="https://wa.me/201061119615" target="_blank" class="btn-whatsapp" style="display:block; margin-bottom:12px; background:#25d366; color:#fff; padding:14px; border-radius:50px; font-weight:bold; text-decoration:none; font-size:1.1rem;">
-            <i class="fab fa-whatsapp"></i> فرع أكتوبر
-        </a>
-        <a href="https://wa.me/201032444727" target="_blank" class="btn-whatsapp" style="display:block; margin-bottom:12px; background:#25d366; color:#fff; padding:14px; border-radius:50px; font-weight:bold; text-decoration:none; font-size:1.1rem;">
-            <i class="fab fa-whatsapp"></i> فرع فيصل
-        </a>
-        <button onclick="document.getElementById('consultModal').style.display='none'" style="background:#e2e8f0; border:none; padding:10px 28px; border-radius:50px; cursor:pointer; font-weight:bold; font-size:1rem; margin-top:8px; color:#1e293b;">
-            إلغاء
-        </button>
-    </div>
-</div>
 </body>
 </html>
