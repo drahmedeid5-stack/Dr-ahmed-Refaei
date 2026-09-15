@@ -268,9 +268,20 @@
             background: #ffffff;
             transform: scale(1.2);
         }
+        @media (max-width: 700px) {
+            .hero-doctors {
+                width: 230px;
+                right: 12px;
+                top: 16px;
+            }
+            .doctors-slider { padding: 10px 32px; }
+            .doctor-card-mini img { width: 82px; height: 82px; }
+        }
         @media (max-width: 550px) {
             .gallery-slider { height: 200px; max-width: 100%; }
             .slider-arrow { width: 30px; height: 30px; font-size: 0.85rem; }
+            .hero-doctors { width: 190px; right: 8px; }
+            .doctor-card-mini img { width: 72px; height: 72px; }
         }
 
         .modal-overlay {
@@ -389,7 +400,7 @@
             position: absolute;
             top: 24px;
             right: 20px;
-            width: 260px;
+            width: 360px;
             z-index: 4;
         }
         .hero-doctors-title {
@@ -404,7 +415,7 @@
             background: rgba(255,255,255,0.12);
             border: 1px solid rgba(255,255,255,0.22);
             border-radius: 16px;
-            padding: 10px 38px;
+            padding: 14px 42px;
             backdrop-filter: blur(5px);
         }
         .doctors-viewport { overflow: hidden; border-radius: 10px; }
@@ -416,7 +427,7 @@
             color:#fff;
         }
         .doctor-card-mini img {
-            width:82px; height:82px; object-fit:cover;
+            width:112px; height:112px; object-fit:cover;
             border-radius:50%;
             border:3px solid rgba(255,255,255,.9);
             display:block; margin:0 auto 7px;
@@ -646,6 +657,138 @@
         .about-grid > .about-image { grid-column:2; grid-row:2; }
         .articles-scroll-area { display:block; }
         .articles-scroll-btn { display:none !important; }
+
+        /* ===== تعديل معرض الأطباء: صورة مستطيلة داخل الخلفية الزرقاء ===== */
+        .hero-doctors {
+            top: 18px;
+            right: 20px;
+            width: 430px;
+            z-index: 4;
+        }
+        .doctors-slider {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            backdrop-filter: none;
+        }
+        .doctors-viewport {
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .doctor-card-mini {
+            position: relative;
+            height: 245px;
+            overflow: hidden;
+            text-align: right;
+            background: transparent;
+        }
+        .doctor-card-mini img {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            border-radius: 0;
+            border: 0;
+            margin: 0;
+            display: block;
+            background: transparent;
+        }
+        .doctor-card-mini .doctor-mini-name,
+        .doctor-card-mini .doctor-mini-specialty {
+            position: absolute;
+            right: 18px;
+            left: 18px;
+            z-index: 2;
+            text-align: right;
+            text-shadow: 0 2px 8px rgba(0,0,0,.65);
+        }
+        .doctor-card-mini .doctor-mini-name {
+            bottom: 42px;
+            font-size: 1.35rem;
+            color: #fff;
+        }
+        .doctor-card-mini .doctor-mini-specialty {
+            bottom: 17px;
+            font-size: .95rem;
+            color: #e0efff;
+        }
+        .doctor-slider-arrow { display:none !important; }
+        .doctor-slider-dots {
+            position: relative;
+            z-index: 5;
+            margin-top: 8px;
+            gap: 7px;
+        }
+        .doctor-slider-dots button {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.45);
+            border: 0;
+        }
+        .doctor-slider-dots button.active {
+            background: #fff;
+            transform: scale(1.25);
+        }
+        .hero-top {
+            margin: 18px 470px 0 20px;
+            text-align: right;
+            align-items: flex-start;
+            position: relative;
+            z-index: 5;
+        }
+        .hero-top .doctor-name {
+            font-size: 2.8rem;
+        }
+        .hero-top .doctor-title {
+            margin-bottom: 0;
+        }
+        .hero-center {
+            margin: 10px 470px 20px 20px;
+            text-align: right;
+            min-height: 175px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-center .desc {
+            max-width: none;
+            margin: 10px 0 0;
+        }
+        /* اسم الطبيب والتخصص يكونان في العمود المجاور للصورة، وليس فوق الصورة */
+        .doctor-card-mini .doctor-mini-name,
+        .doctor-card-mini .doctor-mini-specialty {
+            display: none;
+        }
+        @media (max-width: 850px) {
+            .hero-doctors {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: min(430px, 100%);
+                margin: 18px auto 0;
+            }
+            .hero-top {
+                margin: 20px 0 0;
+                text-align: center;
+                align-items: center;
+            }
+            .hero-center {
+                margin: 20px 0;
+                min-height: auto;
+                text-align: center;
+            }
+            .hero-center .desc { margin: 10px auto 0; }
+            .doctor-card-mini,
+            .doctor-card-mini img { height: 230px; }
+        }
+        @media (max-width: 550px) {
+            .hero-doctors { width: 100%; }
+            .doctor-card-mini,
+            .doctor-card-mini img { height: 205px; }
+            .doctor-card-mini .doctor-mini-name { font-size: 1.1rem; bottom: 38px; }
+            .doctor-card-mini .doctor-mini-specialty { font-size: .82rem; bottom: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -873,29 +1016,54 @@
         // ===== دوال تحويل روابط جوجل درايف =====
         function extractFileIdFromDriveUrl(url) {
             if (!url) return null;
-            // محاولة استخراج File ID من أي رابط جوجل درايف
+
+            // تنظيف الرابط أولاً لأن الرابط القادم من Google Sheets
+            // ممكن يكون به مسافات أو ترميز URL.
+            let value = String(url).trim();
+            try { value = decodeURIComponent(value); } catch (e) {}
+
             const patterns = [
-                /\/file\/d\/([^\/]+)/,
-                /[?&]id=([^&]+)/,
-                /\/uc\?id=([^&]+)/,
-                /\/open\?id=([^&]+)/
+                /\/file\/d\/([a-zA-Z0-9_-]+)/i,
+                /\/d\/([a-zA-Z0-9_-]+)/i,
+                /[?&]id=([a-zA-Z0-9_-]+)/i,
+                /[?&]fileId=([a-zA-Z0-9_-]+)/i,
+                /\/uc(?:\/)?\?[^#]*[?&]id=([a-zA-Z0-9_-]+)/i,
+                /\/open\?[^#]*[?&]id=([a-zA-Z0-9_-]+)/i,
+                /\/thumbnail\?[^#]*[?&]id=([a-zA-Z0-9_-]+)/i
             ];
+
             for (const pattern of patterns) {
-                const match = url.match(pattern);
-                if (match) return match[1];
+                const match = value.match(pattern);
+                if (match && match[1]) return match[1];
             }
-            // لو الرابط مجرد ID
-            if (/^[a-zA-Z0-9_-]{20,}$/.test(url.trim())) return url.trim();
+
+            // لو الخانة في Google Sheets تحتوي على File ID فقط.
+            if (/^[a-zA-Z0-9_-]{20,}$/.test(value)) return value;
+
             return null;
         }
 
-        function convertToDirectDriveUrl(url) {
+        // صور Google Drive تستخدم uc?export=view،
+        // أما فيديوهات Google Drive فتستخدم /preview داخل iframe.
+        function convertToDirectDriveUrl(url, mediaType) {
             const fileId = extractFileIdFromDriveUrl(url);
-            if (fileId) {
-                return 'https://drive.google.com/uc?export=view&id=' + fileId;
+            if (!fileId) return url;
+
+            const type = String(mediaType || '').toLowerCase();
+
+            // فيديو Google Drive: الأفضل عرضه داخل iframe عن طريق preview
+            if (type === 'video') {
+                return 'https://drive.google.com/file/d/' + fileId + '/preview';
             }
-            // لو مش جوجل درايف، نرجع الرابط كما هو
-            return url;
+
+            // صورة Google Drive:
+            // استخدام thumbnail بحجم كبير أكثر ثباتاً من uc?export=view
+            // خصوصاً مع روابط Google Drive القادمة من Google Sheets.
+            if (type === 'image' || !type) {
+                return 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w2000';
+            }
+
+            return 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w2000';
         }
 
         function isDriveUrl(url) {
@@ -923,9 +1091,8 @@
             let finalUrl = item.url || '';
             const isDrive = isDriveUrl(finalUrl);
             const isYT = isYouTubeUrl(finalUrl);
-            if (isDrive) finalUrl = convertToDirectDriveUrl(finalUrl);
-
             const type = item.type || (isYT ? 'video' : 'image');
+            if (isDrive) finalUrl = convertToDirectDriveUrl(finalUrl, type);
             const title = item.title || 'صورة';
 
             if (type === 'video' || isYT) {
@@ -1214,17 +1381,18 @@
             let slidesHtml = '';
             galleryData.forEach((item, index) => {
                 const isActive = index === 0 ? 'active' : '';
-                let finalUrl = item.url;
+                let finalUrl = item.url || '';
                 let isDrive = isDriveUrl(finalUrl);
                 let isYT = isYouTubeUrl(finalUrl);
 
-                // تحويل جوجل درايف لمباشر
-                if (isDrive) {
-                    finalUrl = convertToDirectDriveUrl(finalUrl);
-                }
-
                 let content = '';
                 const type = item.type || (isYT ? 'video' : 'image');
+
+                // تحويل Google Drive حسب نوع الملف:
+                // صورة = رابط عرض مباشر، فيديو = رابط Preview مناسب للـ iframe.
+                if (isDrive) {
+                    finalUrl = convertToDirectDriveUrl(finalUrl, type);
+                }
 
                 if (type === 'video' || isYT) {
                     let videoId = '';
